@@ -4,10 +4,15 @@ const { Expense } = require('./schema.js')
 const app = express()
 const bodyparser = require('body-parser')
 app.use(bodyparser.json())
+const cors = require('cors')
+app.use(cors())
+
+
+const port = process.env.PORT || 4000
 async function connectiontoDB() {
     try {
         await mongoose.connect(`mongodb+srv://Hema__:Hema1234@cluster0.doyohtd.mongodb.net/Expense_Tracker?retryWrites=true&w=majority&appName=Cluster0`)
-        const port = 4000
+            // const port = 4000
         app.listen(port, function() {
             console.log(`Listening to port ${port}`)
         })
